@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="TemplateMo">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <title>Education Meeting HTML5 Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-edu-meeting.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/lightbox.css">
+<!--
+
+TemplateMo 569 Edu Meeting
+
+https://templatemo.com/tm-569-edu-meeting
+
+-->
+  </head>
+
+<body>
+
+
+  <!-- ***** Header Area End ***** -->
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f0f0f5;
+      margin: 0;
+      padding: 0;
+    }
+    #app {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 20px;
+    }
+    .header img {
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+    }
+    .header h1 {
+      font-size: 28px;
+      margin: 0;
+    }
+    .header .job-title {
+      color: #777;
+    }
+    .contact-info, .links {
+      margin-top: 10px;
+    }
+    .contact-info div, .links a {
+      font-size: 14px;
+      color: #555;
+      margin-top: 4px;
+    }
+    .links a {
+      color: #0066cc;
+      text-decoration: none;
+      margin-right: 10px;
+    }
+    .links a:hover {
+      text-decoration: underline;
+    }
+    .fa {
+      margin-right: 5px;
+    }
+    .section {
+      margin-top: 30px;
+    }
+    .section h2 {
+      font-size: 20px;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 8px;
+      color: #333;
+    }
+    .skills, .languages {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .skills span, .languages span {
+      background-color: #e0e0e0;
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+    .employment-history .job {
+      margin-bottom: 20px;
+    }
+    .job h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #333;
+    }
+    .job span {
+      color: #777;
+      font-size: 14px;
+    }
+    .achievements {
+      margin-top: 10px;
+      padding-left: 20px;
+      list-style-type: disc;
+    }
+    button.print-btn {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    button.print-btn:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="header">
+      <img :src="photo" alt="Profile Picture">
+      <div>
+        <h1>{{ firstName }} {{ lastName }}</h1>
+        <div class="job-title">{{ jobTitle }}</div>
+        <div class="contact-info">
+          <div><i class="fa fa-map-marker-alt"></i> {{ address }}</div>
+          <div><i class="fa fa-phone"></i> {{ phone }}</div>
+          <div><i class="fa fa-envelope"></i> {{ email }}</div>
+        </div>
+        <div class="links">
+          <a v-for="link in links" :href="link.link" target="_blank">
+            <i :class="`fa fa-${link.label.toLowerCase()}`"></i> {{ link.label }}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section professional-summary">
+      <h2>Professional Summary</h2>
+      <p>{{ professionalSummary }}</p>
+    </div>
+
+    <div class="section skills">
+      <h2>Skills</h2>
+      <div>
+        <span v-for="skill in skills">{{ skill }}</span>
+      </div>
+    </div>
+
+    <div class="section employment-history">
+      <h2>Employment History</h2>
+      <div v-for="job in employmentHistory" class="job">
+        <h3>{{ job.jobTitle }} - {{ job.employer }}</h3>
+        <span>{{ job.startDate }} - {{ job.endDate }} | {{ job.city }}</span>
+        <ul class="achievements">
+          <li v-for="achievement in job.achievements">{{ achievement }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section education">
+      <h2>Education</h2>
+      <div v-for="edu in education">
+        <h3>{{ edu.degree }} - {{ edu.school }}</h3>
+        <span>Graduated: {{ edu.graduationDate }}</span>
+        <p>{{ edu.description }}</p>
+      </div>
+    </div>
+
+    <div class="section languages">
+      <h2>Languages</h2>
+      <div>
+        <span v-for="language in languages">{{ language }}</span>
+      </div>
+    </div>
+
+    <button class="print-btn" @click="print">Print Resume</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script>
+    const resume = {
+      firstName: 'Valentina',
+      lastName: 'Morato',
+      jobTitle: 'Frontend Developer, Chemical Engineer',
+      photo: 'https://avatars.githubusercontent.com/u/47432636?s=460&u=0dd359fdfa1689afcfd1ea9ece1487293ee7c193&v=4',
+      city: 'Medellin',
+      postalCode: '050023',
+      country: 'Colombia',
+      phone: `+573156208581 \n+573113101122`,
+      email: 'vmorato1205@hotmail.com',
+      education: [
+        {
+          school: 'Universidad Pontificia Bolivariana',
+          degree: 'Bachelor',
+          graduationDate: '2016',
+          description: 'Chemical Engineering'
+        }
+      ],
+      links: [
+        { label: 'GitHub', link: 'https://github.com/vmoratog' },
+        { label: 'LinkedIn', link: 'https://www.linkedin.com/in/vmoratog' },
+        { label: 'Website', link: 'https://vmoratog.github.io' }
+      ],
+      skills: ['HTML', 'JavaScript', 'CSS', 'Ionic', 'Angular', 'Sass', 'Vue'],
+      languages: ['English', 'Spanish'],
+      professionalSummary: `Front-end developer with 2 years of experience...`,
+      employmentHistory: [
+        {
+          jobTitle: 'Software Engineer',
+          startDate: 'Jun 2021',
+          endDate: 'Present',
+          employer: 'Growth Acceleration Partners',
+          city: 'Medellein - Remote',
+          achievements: ['Develop responsive, mobile-first layouts...', 'Implement user-facing features...']
+        }
+      ]
+    }
+
+    const formatResume = (r) => ({
+      ...r,
+      address: [
+        r.country,
+        r.city,
+        r.postalCode
+      ].filter(Boolean).join(', ')
+    })
+
+    new Vue({
+      el: "#app",
+      data: formatResume(resume),
+      methods: {
+        print() {
+          window.print();
+        }
+      }
+    });
+  </script>
+
+
+  <!-- ***** Main Banner Area End ***** -->
+
+    <div class="footer">
+      <p>Copyright © 2022 Edu Meeting Co., Ltd. All Rights Reserved. 
+          <br>
+          Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a>
+          <br>
+          Distibuted By: <a href="https://themewagon.com" target="_blank" title="Build Better UI, Faster">ThemeWagon</a>
+        </p>
+    </div>
+
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/lightbox.js"></script>
+    <script src="assets/js/tabs.js"></script>
+    <script src="assets/js/video.js"></script>
+    <script src="assets/js/slick-slider.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script>
+        //according to loftblog tut
+        $('.nav li:first').addClass('active');
+
+        var showSection = function showSection(section, isAnimate) {
+          var
+          direction = section.replace(/#/, ''),
+          reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+          reqSectionPos = reqSection.offset().top - 0;
+
+          if (isAnimate) {
+            $('body, html').animate({
+              scrollTop: reqSectionPos },
+            800);
+          } else {
+            $('body, html').scrollTop(reqSectionPos);
+          }
+
+        };
+
+        var checkSection = function checkSection() {
+          $('.section').each(function () {
+            var
+            $this = $(this),
+            topEdge = $this.offset().top - 80,
+            bottomEdge = topEdge + $this.height(),
+            wScroll = $(window).scrollTop();
+            if (topEdge < wScroll && bottomEdge > wScroll) {
+              var
+              currentId = $this.data('section'),
+              reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+              reqLink.closest('li').addClass('active').
+              siblings().removeClass('active');
+            }
+          });
+        };
+
+        $('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function (e) {
+          e.preventDefault();
+          showSection($(this).attr('href'), true);
+        });
+
+        $(window).scroll(function () {
+          checkSection();
+        });
+    </script>
+</body>
+
+</body>
+</html>
